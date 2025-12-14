@@ -18,8 +18,8 @@ const Layout = ({ children }) => {
                     <Link
                         to="/"
                         className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive('/')
-                                ? 'bg-indigo-50 text-indigo-600'
-                                : 'text-gray-600 hover:bg-gray-50'
+                            ? 'bg-indigo-50 text-indigo-600'
+                            : 'text-gray-600 hover:bg-gray-50'
                             }`}
                     >
                         <LayoutDashboard size={20} />
@@ -28,16 +28,24 @@ const Layout = ({ children }) => {
                     <Link
                         to="/upload"
                         className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive('/upload')
-                                ? 'bg-indigo-50 text-indigo-600'
-                                : 'text-gray-600 hover:bg-gray-50'
+                            ? 'bg-indigo-50 text-indigo-600'
+                            : 'text-gray-600 hover:bg-gray-50'
                             }`}
                     >
                         <Upload size={20} />
                         <span className="font-medium">Upload Orders</span>
                     </Link>
                 </nav>
-                <div className="p-4 border-t border-gray-200">
-                    <p className="text-xs text-gray-400 text-center">© 2024 OrderMgr Pro</p>
+                <div className="p-4 border-t border-gray-200 text-center">
+                    <p className="text-xs text-gray-500 font-medium">© 2025 OrderMgr CPL</p>
+                    <a
+                        href="https://finvolve.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] text-gray-400 hover:text-indigo-500 transition-colors block mt-1"
+                    >
+                        Made by Finvolve
+                    </a>
                 </div>
             </aside>
 
