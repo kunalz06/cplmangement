@@ -94,7 +94,7 @@ const Dashboard = () => {
                                 <span className="text-sm text-gray-500">{groupOrders.length} orders</span>
                             </div>
                             <div className="overflow-x-auto">
-                                <table className="w-full text-left">
+                                <table className="w-full text-left hidden md:table">
                                     <thead className="bg-white border-b border-gray-100">
                                         <tr>
                                             <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Order ID</th>
@@ -158,6 +158,45 @@ const Dashboard = () => {
                                         ))}
                                     </tbody>
                                 </table>
+
+                                {/* Mobile Card View */}
+                                <div className="md:hidden space-y-4 p-4">
+                                    {groupOrders.map((order) => (
+                                        <div key={order.id} className="bg-white p-4 border rounded-lg shadow-sm space-y-3">
+                                            <div className="flex justify-between items-start">
+                                                <div>
+                                                    <span className="text-sm font-medium text-gray-900">#{order.id.slice(0, 8)}...</span>
+                                                    <div className="text-xs text-gray-500 mt-1">
+                                                        {Object.entries(order)
+                                                            .filter(([key]) => !['id', 'createdAt', 'status', 'deliveryDate', 'deliveryTime', 'remarks'].includes(key))
+                                                            .slice(0, 1)
+                                                            .map(([key, val]) => `${key}: ${val}`)}
+                                                    </div>
+                                                </div>
+                                                <span className={`px-2 py-1 text-xs font-semibold rounded-full ${order.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                                                    order.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                                                        'bg-gray-100 text-gray-800'
+                                                    }`}>
+                                                    {order.status || 'Pending'}
+                                                </span>
+                                            </div>
+
+                                            <div className="flex justify-between items-center text-sm text-gray-600 border-t pt-3">
+                                                <div className="flex gap-4">
+                                                    {order.deliveryDate ? (
+                                                        <span className="flex items-center gap-1"><Calendar size={14} /> {order.deliveryDate}</span>
+                                                    ) : (
+                                                        <span className="italic text-gray-400">No Date</span>
+                                                    )}
+                                                </div>
+                                                <div className="flex gap-3">
+                                                    <Link to={`/order/${order.id}`} className="text-indigo-600 font-medium text-sm">View</Link>
+                                                    <button onClick={() => handleDelete(order.id)} className="text-red-500"><Trash2 size={16} /></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     ))}
