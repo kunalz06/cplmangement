@@ -107,8 +107,8 @@ const Dashboard = () => {
                                     <tbody className="divide-y divide-gray-100">
                                         {groupOrders.map((order) => (
                                             <tr key={order.id} className="hover:bg-gray-50 transition-colors">
-                                                <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
-                                                    #{order.id.slice(0, 8)}...
+                                                <td className="px-6 py-4 font-medium text-gray-900 break-all text-xs max-w-[150px]">
+                                                    {order.id}
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className="text-sm text-gray-600 max-w-xs truncate">
@@ -162,7 +162,7 @@ const Dashboard = () => {
                                         <div key={order.id} className="bg-white p-4 border rounded-lg shadow-sm space-y-3">
                                             <div className="flex justify-between items-start">
                                                 <div>
-                                                    <span className="text-sm font-medium text-gray-900">#{order.id.slice(0, 8)}...</span>
+                                                    <span className="text-sm font-medium text-gray-900 break-all">{order.id}</span>
                                                     <div className="text-xs text-gray-500 mt-1">
                                                         <span className="font-semibold">Vendor:</span> {order['ISSUED TO'] || order['Vendor Name'] || 'N/A'}
                                                     </div>
