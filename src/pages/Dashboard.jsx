@@ -112,11 +112,8 @@ const Dashboard = () => {
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className="text-sm text-gray-600 max-w-xs truncate">
-                                                        {Object.entries(order)
-                                                            .filter(([key]) => !['id', 'createdAt', 'status', 'deliveryDate', 'deliveryTime', 'remarks'].includes(key))
-                                                            .slice(0, 2)
-                                                            .map(([key, val]) => `${key}: ${val}`)
-                                                            .join(', ')}
+                                                        <span className="font-semibold text-gray-500 text-xs uppercase tracking-wide mr-1">Vendor:</span>
+                                                        {order['ISSUED TO'] || order['Vendor Name'] || 'N/A'}
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -167,10 +164,7 @@ const Dashboard = () => {
                                                 <div>
                                                     <span className="text-sm font-medium text-gray-900">#{order.id.slice(0, 8)}...</span>
                                                     <div className="text-xs text-gray-500 mt-1">
-                                                        {Object.entries(order)
-                                                            .filter(([key]) => !['id', 'createdAt', 'status', 'deliveryDate', 'deliveryTime', 'remarks'].includes(key))
-                                                            .slice(0, 1)
-                                                            .map(([key, val]) => `${key}: ${val}`)}
+                                                        <span className="font-semibold">Vendor:</span> {order['ISSUED TO'] || order['Vendor Name'] || 'N/A'}
                                                     </div>
                                                 </div>
                                                 <span className={`px-2 py-1 text-xs font-semibold rounded-full ${order.status === 'Completed' ? 'bg-green-100 text-green-800' :
